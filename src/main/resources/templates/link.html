@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,7 +7,31 @@
 <body>
   <h1>URL 링크</h1>
   <ul>
-    <li><a href="/url">basic url</a></li>
+      <li>name : [[ ${name} ]]</li>
+      <li>age : [[ ${age} ]]</li>
+  </ul>
+  <ul>
+    <li><a th:href="@{/url}">basic url</a></li>
+        <!--http://localhost:8080/getInfo?name=장원영&age=21-->
+    <li><a th:href="@{/getInfo(name=${name},age=${age})}">
+        Query Params</a>
+    </li>
+    <span>요청 구두번호 : [[ ${shoesNumber} ]]</span>
+    <li>
+    <!-- http://localhost:8080/shoes/details/3  -->
+        <a th:href="@{/shoes/details/{id}(id=${shoesNumber})}">
+            Path Variable
+        </a>
+    </li>
+  </ul>
+  <!-- http://localhost:8080/shoes/details/3?name=장원영  -->
+  <ul>
+      <li>
+          <a th:href="@{/shoes/{id}(id=${shoesNumber},
+                                                name=${name})}">
+          Query Params + Path Variable
+          </a>
+      </li>
   </ul>
 </body>
 </html>
