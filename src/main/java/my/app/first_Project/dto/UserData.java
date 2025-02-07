@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 //@RequiredArgsConstructor
 public class UserData {
     private String userName;

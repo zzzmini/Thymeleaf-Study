@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/basic")
@@ -20,7 +17,7 @@ public class ThymeleafController {
     @GetMapping("/date")
     public String date(Model model) {
         model.addAttribute("nowDateTime",
-                    LocalDateTime.now());
+                LocalDateTime.now());
         return "/utility/date";
     }
 
@@ -71,5 +68,46 @@ public class ThymeleafController {
         animalMap.put("cat", cat);
         model.addAttribute("map", animalMap);
         return "/basic/variables";
+    }
+
+    @GetMapping("/literal")
+    public String literal(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "/basic/literal";
+    }
+
+    @GetMapping("/operation")
+    public String operation(Model model) {
+        model.addAttribute("a", 10);
+        model.addAttribute("b", 3);
+        model.addAttribute("nullData", null);
+        model.addAttribute("name", "리사");
+        return "/basic/operation";
+    }
+
+    @GetMapping("/attribute")
+    public String attribute() {
+        return "/basic/attribute";
+    }
+
+    @GetMapping("/for")
+    public String forOperation(Model model){
+        addUser(model);
+        return "/basic/for_opr";
+    }
+
+    private void addUser(Model model) {
+        List<UserData> userList = new ArrayList<>(
+                Arrays.asList(
+                        new UserData("장원영", 21, "서울"),
+                        new UserData("안유진", 23, "대구"),
+                        new UserData("이서", 19, "부산"),
+                        new UserData("가을", 24, "광주"),
+                        new UserData("리즈", 22, "울산"),
+                        new UserData("레이", 22, "부산")
+                )
+        );
+        model.addAttribute(userList);
+        System.out.println(userList);
     }
 }
