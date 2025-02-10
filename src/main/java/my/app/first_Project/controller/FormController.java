@@ -20,6 +20,7 @@ public class FormController {
 //        Map<String, String> map = favorite();
 //        model.addAttribute("map", map);
         model.addAttribute("user", new UserInfo());
+    public String showForm() {
         return "/form/basicForm";
     }
 
@@ -47,10 +48,13 @@ public class FormController {
     @PostMapping("/sendData")
     public String sendPostData(
             @ModelAttribute("user") UserInfo info,
+            UserInfo info,
             Model model) {
         System.out.println(info);
         model.addAttribute("info", info);
 
+        model.addAttribute("nickname", info.getNickname());
+        model.addAttribute("email", info.getEmail());
         return "/form/returnForm";
     }
 

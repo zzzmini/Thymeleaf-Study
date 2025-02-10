@@ -13,10 +13,13 @@
     </div>
     <form th:action="@{/sendData}"
             method="post" th:object="${user}">
+    <form th:action="@{/sendData}" method="post">
       <div>
         <label for="nickname">NickName</label>
         <input type="text" class="form-control" name="myName"
                 th:field="${user.nickname}">
+        <input type="text" class="form-control" name="nickname"
+                th:value="${user.nickname}">
         <label for="email">이메일</label>
         <input type="email" class="form-control"
                 th:field="*{email}">
@@ -30,6 +33,7 @@
               <label for="trueOrFalse1" class="form-check-label">
                   True or False</label>
           </div>
+        <input type="email" class="form-control" name="email">
       </div>
       <button class="btn btn-primary" type="submit">전송</button>
     </form>
