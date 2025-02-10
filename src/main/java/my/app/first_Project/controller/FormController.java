@@ -1,5 +1,6 @@
 package my.app.first_Project.controller;
 
+import my.app.first_Project.dto.Language;
 import my.app.first_Project.dto.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,11 @@ public class FormController {
 //        model.addAttribute("map", map);
         model.addAttribute("user", new UserInfo());
         return "/form/basicForm";
+    }
+
+    @ModelAttribute("lang")
+    private Language[] languages() {
+        return Language.values();
     }
 
     @ModelAttribute("hobbies")
@@ -50,9 +56,6 @@ public class FormController {
             Model model) {
         System.out.println(info);
         model.addAttribute("info", info);
-
-        model.addAttribute("nickname", info.getNickname());
-        model.addAttribute("email", info.getEmail());
         return "/form/returnForm";
     }
 

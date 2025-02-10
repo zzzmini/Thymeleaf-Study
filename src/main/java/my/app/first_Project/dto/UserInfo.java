@@ -14,4 +14,5 @@ public class UserInfo {
     private String email;
     private boolean trueOrFalse;
     private List<String> hobbies; // 멀티체크박스(취미데이터 얻기)
+    private String language; // radio-button(옵션단추) -- 오로지 결과 1개
 }

@@ -21,6 +21,7 @@
         <input type="email" class="form-control"
                 th:field="*{email}">
       </div>
+        <hr>
         <!--  체크박스의 사용  -->
       <div>CheckBox Test</div>
       <div>
@@ -31,6 +32,27 @@
                   True or False</label>
           </div>
       </div>
+        <hr>
+        <!--   다중 체크박스 - 동적생성하기     -->
+        <div>
+            <div>취미 선택(다중선택가능)</div>
+            <div th:each="h : ${hobbies}">
+                <input type="checkbox" th:field="*{hobbies}"
+                    th:value="${h.key}" class="form-check-input">
+                <label th:for="${#ids.prev('hobbies')}" th:text="${h.value}" class="form-check-label"></label>
+            </div>
+        </div>
+        <hr>
+        <!--   좋아하는 프로그램 언어 (한 개만 선택)   -->
+        <div>
+            <div>프로그램 언어 선택(한 개만)</div>
+            <div th:each="x : ${lang}" class="form-check form-check-inline">
+                <input type="radio" th:field="*{language}" th:value="${x.name()}"
+                    class="form-check-input">
+                <label th:for="${#ids.prev('language')}"
+                    th:text="${x.description}" class="form-check-label"></label>
+            </div>
+        </div>
       <button class="btn btn-primary" type="submit">전송</button>
     </form>
   </div>

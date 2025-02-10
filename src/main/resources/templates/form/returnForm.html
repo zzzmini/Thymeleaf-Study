@@ -12,5 +12,12 @@
   <span>email : [[ *{email} ]]</span>
   <br>
   <span>TrueOrFalse : [[ *{trueOrFalse} ]]</span>
+  <br>
+    <span>Hobbies : </span>
+    <th:block th:each="h : *{hobbies}">
+        <span th:text="${h}"></span>
+    </th:block>
+    <br>
+    <span>Like Language : [[ *{language} ]]</span>
 </body>
 </html>
