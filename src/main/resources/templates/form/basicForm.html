@@ -38,7 +38,7 @@
             <div>취미 선택(다중선택가능)</div>
             <div th:each="h : ${hobbies}">
                 <input type="checkbox" th:field="*{hobbies}"
-                    th:value="${h.key}" class="form-check-input">
+                    th:value="${h.key}" class="form-check-input checkH">
                 <label th:for="${#ids.prev('hobbies')}" th:text="${h.value}" class="form-check-label"></label>
             </div>
         </div>
@@ -53,8 +53,48 @@
                     th:text="${x.description}" class="form-check-label"></label>
             </div>
         </div>
-      <button class="btn btn-primary" type="submit">전송</button>
+        <hr>
+        <!--   국가선택     -->
+        <div>
+            <div>국가선택</div>
+            <select th:field="*{country}" class="form-select">
+                <option value="">---  국가를 선택하세요 ---</option>
+                <option th:each="c : ${nation}" th:value="${c.name()}"
+                    th:text="${c.description}"></option>
+            </select>
+        </div>
+      <button class="btn btn-primary" type="submit"
+            id="submit_button" onclick="check()">전송</button>
     </form>
   </div>
+  <script>
+      function check(){
+        event.preventDefault()
+        let form = document.querySelector('form')
+        let nickName = document.querySelector('#nickname')
+
+        if(nickname.value == ''){
+            alert("닉네임 입력 필요")
+            return
+        } else if(! checkHobbies()){
+            alert("한가지 좋아하는 취미는 선택하세요")
+            return
+        }
+        else {
+            form.submit();
+        }
+      }
+
+      function checkHobbies(){
+        let hobbies = document.querySelectorAll('.checkH')
+        let checked = false;
+        hobbies.forEach((c) => {
+            if(c.checked) {
+                return checked;
+            }
+        })
+        return checked;
+      }
+  </script>
 </body>
 </html>
