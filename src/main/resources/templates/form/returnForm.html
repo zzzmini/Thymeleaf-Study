@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:object="${info}">
+  <h1>Result</h1>
+  <span>Nickname : [[ *{nickname} ]]</span>
+  <br>
+  <span>email : [[ *{email} ]]</span>
+  <br>
+  <span>TrueOrFalse : [[ *{trueOrFalse} ]]</span>
+</body>
+</html>
